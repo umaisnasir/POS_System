@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1020" />
+  <title>NOVA POS — 2026 Glass Edition</title>
+  <link rel="stylesheet" href="styles.css?v=3.1.0" />
+</head>
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+  <div class="ambient ambient-c"></div>
+
+  <div class="desktop-notice" role="status">
+    <strong>NOVA POS is desktop-optimised.</strong>
+    Open this interface on a screen at least 1180px wide.
+  </div>
+
+  <main class="pos-shell" aria-label="NOVA point of sale application">
+    <aside class="sidebar glass-panel" aria-label="Primary navigation">
+      <button class="brand-mark" aria-label="NOVA POS home" title="NOVA POS">
+        <span class="brand-orbit"></span>
+        <span>N</span>
+      </button>
+
+      <nav class="sidebar-nav">
+        <button class="nav-button active" data-view="sell" aria-label="Sell" title="Sell">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h4"/></svg>
+          <span>Sell</span>
+        </button>
+        <button class="nav-button" data-view="orders" aria-label="Orders" title="Orders">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18H6zM9 7h6M9 11h6M9 15h4"/></svg>
+          <span>Orders</span>
+        </button>
+        <button class="nav-button" data-view="inventory" aria-label="Inventory" title="Inventory">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 7 8-4 8 4-8 4zM4 7v10l8 4 8-4V7M12 11v10"/></svg>
+          <span>Stock</span>
+        </button>
+        <button class="nav-button" data-view="analytics" aria-label="Analytics" title="Analytics">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>
+          <span>Stats</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button class="nav-button" id="themeToggle" aria-label="Toggle atmosphere" title="Toggle atmosphere">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg>
+          <span id="themeLabel">Dark</span>
+        </button>
+        <button class="avatar-button" aria-label="Current user profile" title="Alex Morgan">
+          <span>AM</span>
+          <i></i>
+        </button>
+      </div>
+    </aside>
+
+    <section class="workspace">
+      <header class="topbar glass-panel">
+        <div class="welcome-block">
+          <p class="eyebrow">Sunday service · Register 04</p>
+          <h1>Good evening, <span>Alex.</span></h1>
+        </div>
+
+        <label class="search-control" for="productSearch">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+          <input id="productSearch" type="search" autocomplete="off" placeholder="Search products, SKU or category" />
+          <kbd>Ctrl K</kbd>
+        </label>
+
+        <div class="top-actions">
+          <button class="icon-button liquid" id="heldOrdersButton" aria-label="Held orders" title="Held orders">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v16H6zM9 8h6M9 12h6"/></svg>
+            <span class="notification-dot" id="heldCount">0</span>
+          </button>
+          <button class="icon-button liquid" id="notificationButton" aria-label="Notifications" title="Notifications">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg>
+            <span class="notification-dot" id="notificationCount" aria-label="0 notifications">0</span>
+          </button>
+        </div>
+      </header>
+
+      <section class="signal-strip" aria-label="Sales overview">
+        <article class="signal-card glass-panel">
+          <div class="signal-icon accent-violet">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>
+          </div>
+          <div><span>Net sales</span><strong id="netSales">£0.00</strong></div>
+          <em id="netSalesTrend">0.0%</em>
+        </article>
+        <article class="signal-card glass-panel">
+          <div class="signal-icon accent-cyan">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10H7zM4 4h3M17 4h3M4 20h3M17 20h3"/></svg>
+          </div>
+          <div><span>Transactions</span><strong id="transactionCount">0</strong></div>
+          <em id="transactionTrend">0.0%</em>
+        </article>
+        <article class="signal-card glass-panel">
+          <div class="signal-icon accent-amber">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M17 7H9.5a3.5 3.5 0 0 0 0 7H14a3 3 0 0 1 0 6H6"/></svg>
+          </div>
+          <div><span>Average basket</span><strong id="averageBasket">£0.00</strong></div>
+          <em id="basketTrend">0.0%</em>
+        </article>
+      </section>
+
+      <section class="catalog glass-panel">
+        <div class="catalog-header">
+          <div>
+            <p class="eyebrow">Curated catalogue</p>
+            <h2>Choose an item</h2>
+          </div>
+          <div class="catalog-meta">
+            <span class="live-pill"><i></i> Inventory live</span>
+            <button class="sort-button liquid" id="sortButton" aria-label="Sort products">
+              Featured
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 10 4 4 4-4"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="category-row" id="categoryRow" role="tablist" aria-label="Product categories"></div>
+        <div class="product-grid" id="productGrid" aria-live="polite"></div>
+        <div class="empty-state" id="emptyState" hidden>
+          <div class="empty-orbit"></div>
+          <h3>No products found</h3>
+          <p>Try a broader search or another category.</p>
+          <button class="secondary-action liquid" id="resetFilters">Reset filters</button>
+        </div>
+      </section>
+    </section>
+
+    <aside class="cart-panel glass-panel" aria-label="Current order">
+      <header class="cart-header">
+        <div>
+          <p class="eyebrow">Current sale</p>
+          <h2>Order <span id="orderNumber">#0000</span></h2>
+        </div>
+        <button class="icon-button liquid" id="newSaleButton" aria-label="Start new sale" title="Start new sale">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+      </header>
+
+      <button class="customer-card" id="customerButton" aria-label="Select customer">
+        <span class="customer-avatar">GU</span>
+        <span><small>Customer</small><strong id="customerName">Guest user</strong></span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+
+      <div class="cart-divider"><span>Order items</span><strong id="itemCount">0 items</strong></div>
+      <div class="cart-items" id="cartItems" aria-live="polite"></div>
+
+      <div class="cart-empty" id="cartEmpty">
+        <div class="cart-empty-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h15l-2 9H8L6 3H3M9 21h.01M18 21h.01"/></svg>
+        </div>
+        <h3>Your basket is empty</h3>
+        <p>Select an item from the catalogue to begin.</p>
+      </div>
+
+      <section class="totals-card">
+        <div><span>Subtotal</span><strong id="subtotal">£0.00</strong></div>
+        <div><span>Discount <button class="inline-link" id="discountButton">Add</button></span><strong id="discount">−£0.00</strong></div>
+        <div><span>VAT (20%)</span><strong id="vat">£0.00</strong></div>
+        <div class="total-line"><span>Total</span><strong id="total">£0.00</strong></div>
+      </section>
+
+      <div class="cart-actions">
+        <button class="secondary-action liquid" id="holdButton">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h10v14H7zM10 9h4"/></svg>
+          Hold
+          <kbd>F2</kbd>
+        </button>
+        <button class="checkout-button liquid" id="checkoutButton" disabled>
+          <span>
+            <small>Take payment</small>
+            <strong id="checkoutTotal">£0.00</strong>
+          </span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          <kbd>F4</kbd>
+        </button>
+      </div>
+
+      <footer class="register-status">
+        <span><i></i> Register online</span>
+        <span>Synced just now</span>
+      </footer>
+    </aside>
+  </main>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+
+  <dialog class="app-dialog" id="paymentDialog">
+    <form method="dialog" class="dialog-card glass-panel" id="paymentForm">
+      <header>
+        <div><p class="eyebrow">Secure checkout</p><h2>Take payment</h2></div>
+        <button class="icon-button liquid" value="cancel" aria-label="Close payment dialog">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        </button>
+      </header>
+
+      <div class="payment-total">
+        <span>Amount due</span>
+        <strong id="modalTotal">£0.00</strong>
+      </div>
+
+      <fieldset class="payment-methods">
+        <legend>Payment method</legend>
+        <label class="payment-option selected">
+          <input type="radio" name="payment" value="Card" checked />
+          <span class="payment-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3zM3 10h18"/></svg></span>
+          <span><strong>Card</strong><small>Tap, chip or swipe</small></span>
+          <i></i>
+        </label>
+        <label class="payment-option">
+          <input type="radio" name="payment" value="Cash" />
+          <span class="payment-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18v10H3zM7 12h.01M17 12h.01M12 9c2 0 3 1 3 3s-1 3-3 3-3-1-3-3 1-3 3-3Z"/></svg></span>
+          <span><strong>Cash</strong><small>Enter tendered amount</small></span>
+          <i></i>
+        </label>
+        <label class="payment-option">
+          <input type="radio" name="payment" value="Split" />
+          <span class="payment-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4v16M16 4v16M4 8h16M4 16h16"/></svg></span>
+          <span><strong>Split</strong><small>Use two methods</small></span>
+          <i></i>
+        </label>
+      </fieldset>
+
+      <div class="dialog-actions">
+        <button type="button" class="secondary-action liquid" id="cancelPayment">Cancel</button>
+        <button type="submit" class="checkout-button liquid" id="completePayment">
+          <span><small>Complete sale</small><strong id="completePaymentAmount">£0.00</strong></span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>
+        </button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="app-dialog" id="heldDialog">
+    <section class="dialog-card glass-panel held-dialog-card">
+      <header>
+        <div><p class="eyebrow">Saved locally</p><h2>Held orders</h2></div>
+        <button class="icon-button liquid" id="closeHeldDialog" aria-label="Close held orders">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        </button>
+      </header>
+      <div class="held-orders-list" id="heldOrdersList"></div>
+    </section>
+  </dialog>
+
+  <script src="app.js?v=3.1.0"></script>
+</body>
+</html>
