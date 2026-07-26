@@ -1,0 +1,91 @@
+@import "./heights";
+@import "./variables";
+@import "allmixing";
+
+%flex__area{
+    display: block;
+    gap:5px
+}
+.wrapperthree{
+    @include layout;
+    @include border(1px,#222);
+    background: #3d3d3d;
+    #{&}__buttonarea{
+        @extend %flex__area;
+        padding: 20px 0;
+    }
+    .btn{
+        text-transform: capitalize;
+        font-size:  map-get($font-size, regular);
+        font-weight: map-get($font-weight, regular);
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        @include transition-ease;
+        &:hover{
+            @include btnHover(rgba(0,0,0,.2))
+        }
+    }
+    .btn__1{
+        @include borderRadius(5px);
+        @include buttonType(#000,#fff);
+    }
+    .btn__2{
+        @include borderRadius(0px);
+        @include buttonType(#416aa3,#0e0d0d);
+    }
+    .btn__3{
+        @include borderRadius(20px);
+        @include buttonType(#00ff00,#000000);
+    }
+    .btn__4{
+        @include borderRadius(50%);
+        @include buttonType(#6c6377,#fff);
+        height: 100px;
+        width: 100px;
+
+    }
+}
+.wrapper__two{
+    @include layout;
+    @include border(3px,$textColor);
+    background: $headingColor;
+    h1{
+        color: $textWhite;
+    }
+    p{
+        color: $textWhite;
+    }
+}
+
+.wrapper__one{
+    @include layout;
+    background: $colorBg;
+    @include border(1px, $borderColor);
+
+    h1{
+        text-transform: uppercase;
+        color: $headingColor;
+    }
+    nav{
+        ul{
+            list-style: none;
+            padding:0;
+            margin: 0;
+        }
+        li{
+            display: inline;
+            text-transform: capitalize;
+            cursor: pointer;
+        }
+        a{
+            padding:10px 20px;
+            background: $headingColor;
+            color: $textWhite;
+            &:hover{
+                background: $textColor;
+                
+            }
+        }
+    }
+}
